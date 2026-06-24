@@ -17,21 +17,20 @@ Designed with scalable backend architecture using Node.js, Express.js, MongoDB, 
 🔗 Add Backend Deployment URL
 
 ---
-
 # ✨ Features
 
-✅ Authentication & Secure Sessions
-✅ Guest & Host Role Management
-✅ Dynamic Property Listings
-✅ Property Detail Pages
-✅ Booking Management System
-✅ Favourite Homes Functionality
-✅ Property Image Upload
-✅ Responsive UI Experience
-✅ Server Side Rendering
-✅ Session-Based Authentication
-✅ Clean Navigation & Layout
-✅ Modern Booking Workflow
+* ✅ Authentication & Secure Sessions
+* ✅ Guest & Host Role Management
+* ✅ Dynamic Property Listings
+* ✅ Property Detail Pages
+* ✅ Booking Management System
+* ✅ Favourite Homes Functionality
+* ✅ Property Image Upload
+* ✅ Responsive UI Experience
+* ✅ Server Side Rendering
+* ✅ Session-Based Authentication
+* ✅ Clean Navigation & Layout
+* ✅ Modern Booking Workflow
 
 ---
 
