@@ -184,27 +184,34 @@ Host:
 
 # 📸 Application Preview
 
-## Homepage
+## 🏠 Homepage
 
 ![Homepage](README-ASSETS/home.png)
 
 ---
 
-## Property Listings
+## 🔐 Login Page
 
-![Listings](README-ASSETS/listings.png)
+![Login](README-ASSETS/login.png)
 
 ---
 
-## Booking Experience
+## 🏡 Property Details
+
+![Property Details](README-ASSETS/details.png)
+
+---
+
+## 📅 Booking Experience
 
 ![Bookings](README-ASSETS/bookings.png)
 
 ---
 
-## Host Dashboard
+## ➕ Add Property (Host)
 
-![Dashboard](README-ASSETS/dashboard.png)
+![Add Home](README-ASSETS/addHome.png)
+
 
 ---
 
