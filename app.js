@@ -40,23 +40,59 @@ const store = new MongoDBStore({
   collection: 'sessions'
 });
 
+// const randomString = (length) => {
+//   const characters = 'abcdefghijklmnopqrstuvwxyz';
+//   let result = '';
+//   for (let i = 0; i < length; i++) {
+//     result += characters.charAt(Math.floor(Math.random() * characters.length));
+//   }
+//   return result;
+// }
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "uploads/");
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, randomString(10) + '-' + file.originalname);
+//   }
+// });
+
+
+
+const fs = require("fs");
+
 const randomString = (length) => {
   const characters = 'abcdefghijklmnopqrstuvwxyz';
   let result = '';
+
   for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
+    result += characters.charAt(
+      Math.floor(Math.random() * characters.length)
+    );
   }
+
   return result;
+};
+
+if (!fs.existsSync("uploads")) {
+  fs.mkdirSync("uploads");
 }
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploads/");
   },
+
   filename: (req, file, cb) => {
-    cb(null, randomString(10) + '-' + file.originalname);
+    cb(null, randomString(10) + "-" + file.originalname);
   }
 });
+
+
+
+
+
+
 
 const fileFilter = (req, file, cb) => {
   if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg') {
