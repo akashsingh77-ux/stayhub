@@ -45,16 +45,42 @@ exports.getHostHomes = (req, res, next) => {
   });
 };
 
+// exports.postAddHome = (req, res, next) => {
+//   const { houseName, price, location, rating, description } = req.body;
+//   console.log(houseName, price, location, rating, description);
+//   console.log(req.file);
+
+//   if (!req.file) {
+//     return res.status(422).send("No image provided");
+//   }
+
+//   ///const photo = req.file.path;
+//   const photo = req.file.path.replace(/\\/g, "/");
+
+//   const home = new Home({
+//     houseName,
+//     price,
+//     location,
+//     rating,
+//     photo,
+//     description,
+//   });
+//   home.save().then(() => {
+//     console.log("Home Saved successfully");
+//   });
+
+//   res.redirect("/host/host-home-list");
+//};
 exports.postAddHome = (req, res, next) => {
   const { houseName, price, location, rating, description } = req.body;
-  console.log(houseName, price, location, rating, description);
+
   console.log(req.file);
 
   if (!req.file) {
     return res.status(422).send("No image provided");
   }
 
-  const photo = req.file.path;
+  const photo = req.file.path.replace(/\\/g, "/");
 
   const home = new Home({
     houseName,
@@ -64,13 +90,18 @@ exports.postAddHome = (req, res, next) => {
     photo,
     description,
   });
-  home.save().then(() => {
-    console.log("Home Saved successfully");
-  });
 
-  res.redirect("/host/host-home-list");
+  home
+    .save()
+    .then(() => {
+      console.log("Home Saved successfully");
+      res.redirect("/host/host-home-list");
+    })
+    .catch((err) => {
+      console.log("Error while saving:", err);
+      res.status(500).send("Internal Server Error");
+    });
 };
-
 exports.postEditHome = (req, res, next) => {
   const { id, houseName, price, location, rating, description } =
     req.body;;
@@ -88,7 +119,8 @@ exports.postEditHome = (req, res, next) => {
             console.log("Error while deleting file ", err);
           }
         });
-        home.photo = req.file.path;
+        ///home.photo = req.file.path;
+        home.photo = req.file.path.replace(/\\/g, "/");
       }
 
       home
