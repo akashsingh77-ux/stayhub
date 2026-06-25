@@ -22,14 +22,8 @@ From dynamic listings and role-based access control to booking workflows and ima
 
 # 🌐 Live Preview
 
-### Frontend
-
-🔗 Add Frontend Deployment URL
-
-### Backend
-
-🔗 Add Backend Deployment URL
-
+## Live Demo
+https://stayhub-22ln.onrender.com
 ---
 # ✨ Features
 
