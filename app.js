@@ -58,7 +58,7 @@ const store = new MongoDBStore({
 // });
 
 
-
+///new code1
 const fs = require("fs");
 
 const randomString = (length) => {
@@ -74,13 +74,14 @@ const randomString = (length) => {
   return result;
 };
 
-if (!fs.existsSync("uploads")) {
-  fs.mkdirSync("uploads");
-}
+const uploadPath = path.join(rootDir, "uploads");
 
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath, { recursive: true });
+}
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/");
+    cb(null, uploadPath);
   },
 
   filename: (req, file, cb) => {
