@@ -80,7 +80,7 @@ exports.postAddHome = (req, res, next) => {
     return res.status(422).send("No image provided");
   }
 
-  const photo = req.file.path.replace(/\\/g, "/");
+  const photo = "/uploads/" + req.file.filename;
 
   const home = new Home({
     houseName,
@@ -120,7 +120,7 @@ exports.postEditHome = (req, res, next) => {
           }
         });
         ///home.photo = req.file.path;
-        home.photo = req.file.path.replace(/\\/g, "/");
+       home.photo = "/uploads/" + req.file.filename;
       }
 
       home
