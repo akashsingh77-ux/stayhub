@@ -1,6 +1,14 @@
 // Core Module
 require('dns').setDefaultResultOrder('ipv4first');
 
+
+require('dotenv').config();
+
+
+
+
+
+
 const path = require('path');
 
 // External Module
@@ -11,7 +19,9 @@ const { default: mongoose } = require('mongoose');
 const multer = require('multer');
 
 
-const DB_PATH = "mongodb://akashsingh007795_db_user:8FU3mdrFtUzky9qZ@ac-ozlbtoq-shard-00-00.p7xcsuf.mongodb.net:27017,ac-ozlbtoq-shard-00-01.p7xcsuf.mongodb.net:27017,ac-ozlbtoq-shard-00-02.p7xcsuf.mongodb.net:27017/airbnb?ssl=true&replicaSet=atlas-5spy8y-shard-0&authSource=admin&appName=Cluster0";
+//const DB_PATH = "mongodb://akashsingh007795_db_user:8FU3mdrFtUzky9qZ@ac-ozlbtoq-shard-00-00.p7xcsuf.mongodb.net:27017,ac-ozlbtoq-shard-00-01.p7xcsuf.mongodb.net:27017,ac-ozlbtoq-shard-00-02.p7xcsuf.mongodb.net:27017/airbnb?ssl=true&replicaSet=atlas-5spy8y-shard-0&authSource=admin&appName=Cluster0";
+
+const DB_PATH = process.env.MONGO_URI;
 
 //Local Module
 const storeRouter = require("./routes/storeRouter")
@@ -69,7 +79,8 @@ app.use("/host/uploads", express.static(path.join(rootDir, 'uploads')))
 app.use("/homes/uploads", express.static(path.join(rootDir, 'uploads')))
 
 app.use(session({
-  secret: "KnowledgeGate AI with Complete Coding",
+  //secret: "KnowledgeGate AI with Complete Coding",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   store
@@ -93,7 +104,8 @@ app.use("/host", hostRouter);
 
 app.use(errorsController.pageNotFound);
 
-const PORT = 3006;
+///const PORT = 3006;
+const PORT = process.env.PORT || 3006;
 
 mongoose.connect(DB_PATH).then(() => {
   console.log('Connected to Mongo successfully!');
